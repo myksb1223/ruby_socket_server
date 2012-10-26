@@ -10,7 +10,7 @@ How to Use?
 
 Create database and files.
 
-<pre><code>rails g ruby_socket_server
+<pre><code>rails g ruby_socket_server<br />rake db:migrate
 </code></pre>
 
 Create server information.

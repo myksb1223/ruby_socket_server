@@ -11,8 +11,12 @@ class RubySocketServerGenerator < Rails::Generators::Base
 
   def copy_migration
     add_ruby_socket_server_migration('create_users')
+    add_ruby_socket_server_model('user')
     add_ruby_socket_server_migration('create_servers')
+    add_ruby_socket_server_model('server')
     add_ruby_socket_server_migration('create_friend_chats')
+    add_ruby_socket_server_model('friend_chat')
+    add_ruby_socket_server_lib('server_start')
   end
 
   protected
@@ -23,5 +27,13 @@ class RubySocketServerGenerator < Rails::Generators::Base
     if !self.class.migration_exists?(migration_dir, template)
       migration_template "#{template}.rb", "db/migrate/#{template}.rb"
     end
+  end
+
+  def add_ruby_socket_server_model(template)
+    copy_file "#{template}.rb", "app/models/#{template}.rb"
+  end
+
+  def add_ruby_socket_server_lib(template)
+    copy_file "#{template}.rb", "lib/#{template}.rb"
   end
 end

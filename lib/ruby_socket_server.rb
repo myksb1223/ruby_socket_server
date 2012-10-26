@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'daemons'
 require 'socket'
 require 'json'
 require 'base64'
